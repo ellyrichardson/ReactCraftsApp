@@ -46,6 +46,7 @@ class Login extends Component {
 
     // send to my API
     handleSubmit = e => {
+        e.preventDefault();
         // json objects to be processed
         let data = {
             client_id: client_id_info,
@@ -69,7 +70,7 @@ class Login extends Component {
             this.props.obtainClientInfo(json);
             console.log('Login', JSON.stringify(json));
         });
-        wait(10000);
+        //wait(10000);
     }
 
     render() {
@@ -82,7 +83,7 @@ class Login extends Component {
                             autoFocus
                             type="username"
                             value={this.state.email} // default value
-                            onChange={this.handleChange}
+                            onChange={this.handleChange.bind()}
                         />
                     </Form.Group>
                     <Form.Group controlId="password" bsSize="large">
@@ -90,7 +91,7 @@ class Login extends Component {
                         <Form.Control
                             type="password"
                             value={this.state.password} //default value
-                            onChange={this.handleChange}
+                            onChange={this.handleChange.bind()}
                         />
                     </Form.Group>
                     <Button 
@@ -99,7 +100,7 @@ class Login extends Component {
                         // disabled if inputs are empty in validation
                         disabled={!this.validateForm()}
                         type="submit"
-                        //onClick={this.routeChange}
+                        //onClick={this.routeChange.bind()} //binded so it wont rerender
                     >
                         Login
                     </Button>

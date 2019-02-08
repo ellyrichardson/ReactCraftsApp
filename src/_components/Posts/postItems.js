@@ -6,7 +6,9 @@ class PostItems extends Component {
       return (
         <li className="post-items">
           <strong>{this.props.post.post_title}</strong>
-          {this.props.post_content}
+          <br/>
+          {this.props.post.post_content}
+          <br/>
           <br/>
         </li>
       );

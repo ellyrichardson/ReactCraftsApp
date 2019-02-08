@@ -37,11 +37,14 @@ class Posts extends Component {
                 console.log('Posts', JSON.stringify(this.state.posts));
                 console.log('Bearer ' + this.props.accessToken);
             })
-            wait(10000);
+    }
+
+    componentDidMount() {
+        this.listUserPosts();
     }
 
     render() {
-        this.listUserPosts();
+        // lists every posts of the user logged in
         let postItemsVar = this.state.posts.map(post => {
             return (
                 <PostItems key={post.id} post={post} />
